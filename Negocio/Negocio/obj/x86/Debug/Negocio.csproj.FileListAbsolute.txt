@@ -1,0 +1,15 @@
+C:\Users\diego\Desktop\ADS\PPI\TPI_1\Negocio\Negocio\bin\x86\Debug\Negocio.dll.config
+C:\Users\diego\Desktop\ADS\PPI\TPI_1\Negocio\Negocio\bin\x86\Debug\Negocio.dll
+C:\Users\diego\Desktop\ADS\PPI\TPI_1\Negocio\Negocio\bin\x86\Debug\Negocio.pdb
+C:\Users\diego\Desktop\ADS\PPI\TPI_1\Negocio\Negocio\bin\x86\Debug\Datos.dll
+C:\Users\diego\Desktop\ADS\PPI\TPI_1\Negocio\Negocio\bin\x86\Debug\EntityFramework.dll
+C:\Users\diego\Desktop\ADS\PPI\TPI_1\Negocio\Negocio\bin\x86\Debug\EntityFramework.SqlServer.dll
+C:\Users\diego\Desktop\ADS\PPI\TPI_1\Negocio\Negocio\bin\x86\Debug\Datos.pdb
+C:\Users\diego\Desktop\ADS\PPI\TPI_1\Negocio\Negocio\bin\x86\Debug\Datos.dll.config
+C:\Users\diego\Desktop\ADS\PPI\TPI_1\Negocio\Negocio\bin\x86\Debug\EntityFramework.xml
+C:\Users\diego\Desktop\ADS\PPI\TPI_1\Negocio\Negocio\bin\x86\Debug\EntityFramework.SqlServer.xml
+C:\Users\diego\Desktop\ADS\PPI\TPI_1\Negocio\Negocio\obj\x86\Debug\Negocio.csproj.AssemblyReference.cache
+C:\Users\diego\Desktop\ADS\PPI\TPI_1\Negocio\Negocio\obj\x86\Debug\Negocio.csproj.CoreCompileInputs.cache
+C:\Users\diego\Desktop\ADS\PPI\TPI_1\Negocio\Negocio\obj\x86\Debug\Negocio.csproj.CopyComplete
+C:\Users\diego\Desktop\ADS\PPI\TPI_1\Negocio\Negocio\obj\x86\Debug\Negocio.dll
+C:\Users\diego\Desktop\ADS\PPI\TPI_1\Negocio\Negocio\obj\x86\Debug\Negocio.pdb

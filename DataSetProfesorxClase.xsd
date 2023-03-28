@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataSetProfesorxClase" targetNamespace="http://tempuri.org/DataSetProfesorxClase.xsd" xmlns:mstns="http://tempuri.org/DataSetProfesorxClase.xsd" xmlns="http://tempuri.org/DataSetProfesorxClase.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="BDGimnasioConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="BDGimnasioConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.TPI_1.Properties.Settings.GlobalReference.Default.BDGimnasioConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataSetProfesorxClase" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="DataSetProfesorxClase" msprop:Generator_UserDSName="DataSetProfesorxClase">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="EAlumnoxClase" msprop:Generator_TableClassName="EAlumnoxClaseDataTable" msprop:Generator_TableVarName="tableEAlumnoxClase" msprop:Generator_TablePropName="EAlumnoxClase" msprop:Generator_RowDeletingName="EAlumnoxClaseRowDeleting" msprop:Generator_RowChangingName="EAlumnoxClaseRowChanging" msprop:Generator_RowEvHandlerName="EAlumnoxClaseRowChangeEventHandler" msprop:Generator_RowDeletedName="EAlumnoxClaseRowDeleted" msprop:Generator_UserTableName="EAlumnoxClase" msprop:Generator_RowChangedName="EAlumnoxClaseRowChanged" msprop:Generator_RowEvArgName="EAlumnoxClaseRowChangeEvent" msprop:Generator_RowClassName="EAlumnoxClaseRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="idProfesorxClase" msprop:Generator_ColumnVarNameInTable="columnidProfesorxClase" msprop:Generator_ColumnPropNameInRow="idProfesorxClase" msprop:Generator_ColumnPropNameInTable="idProfesorxClaseColumn" msprop:Generator_UserColumnName="idProfesorxClase" type="xs:long" minOccurs="0" />
+              <xs:element name="idAlumno" msprop:Generator_ColumnVarNameInTable="columnidAlumno" msprop:Generator_ColumnPropNameInRow="idAlumno" msprop:Generator_ColumnPropNameInTable="idAlumnoColumn" msprop:Generator_UserColumnName="idAlumno" type="xs:long" minOccurs="0" />
+              <xs:element name="nombreAlumno" msprop:Generator_ColumnVarNameInTable="columnnombreAlumno" msprop:Generator_ColumnPropNameInRow="nombreAlumno" msprop:Generator_ColumnPropNameInTable="nombreAlumnoColumn" msprop:Generator_UserColumnName="nombreAlumno" type="xs:string" minOccurs="0" />
+              <xs:element name="nombreClase" msprop:Generator_ColumnVarNameInTable="columnnombreClase" msprop:Generator_ColumnPropNameInRow="nombreClase" msprop:Generator_ColumnPropNameInTable="nombreClaseColumn" msprop:Generator_UserColumnName="nombreClase" type="xs:string" minOccurs="0" />
+              <xs:element name="nombreProfesor" msprop:Generator_ColumnVarNameInTable="columnnombreProfesor" msprop:Generator_ColumnPropNameInRow="nombreProfesor" msprop:Generator_ColumnPropNameInTable="nombreProfesorColumn" msprop:Generator_UserColumnName="nombreProfesor" type="xs:string" minOccurs="0" />
+              <xs:element name="dia" msprop:Generator_ColumnVarNameInTable="columndia" msprop:Generator_ColumnPropNameInRow="dia" msprop:Generator_ColumnPropNameInTable="diaColumn" msprop:Generator_UserColumnName="dia" type="xs:string" minOccurs="0" />
+              <xs:element name="horaInicio" msprop:Generator_ColumnVarNameInTable="columnhoraInicio" msprop:Generator_ColumnPropNameInRow="horaInicio" msprop:Generator_ColumnPropNameInTable="horaInicioColumn" msprop:Generator_UserColumnName="horaInicio" type="xs:string" minOccurs="0" />
+              <xs:element name="fechaHastaAxC" msprop:Generator_ColumnVarNameInTable="columnfechaHastaAxC" msprop:Generator_ColumnPropNameInRow="fechaHastaAxC" msprop:Generator_ColumnPropNameInTable="fechaHastaAxCColumn" msprop:Generator_UserColumnName="fechaHastaAxC" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="fechaHastaPxC" msprop:Generator_ColumnVarNameInTable="columnfechaHastaPxC" msprop:Generator_ColumnPropNameInRow="fechaHastaPxC" msprop:Generator_ColumnPropNameInTable="fechaHastaPxCColumn" msprop:Generator_UserColumnName="fechaHastaPxC" type="xs:dateTime" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="EProfesorxClase" msprop:Generator_TableClassName="EProfesorxClaseDataTable" msprop:Generator_TableVarName="tableEProfesorxClase" msprop:Generator_TablePropName="EProfesorxClase" msprop:Generator_RowDeletingName="EProfesorxClaseRowDeleting" msprop:Generator_RowChangingName="EProfesorxClaseRowChanging" msprop:Generator_RowEvHandlerName="EProfesorxClaseRowChangeEventHandler" msprop:Generator_RowDeletedName="EProfesorxClaseRowDeleted" msprop:Generator_UserTableName="EProfesorxClase" msprop:Generator_RowChangedName="EProfesorxClaseRowChanged" msprop:Generator_RowEvArgName="EProfesorxClaseRowChangeEvent" msprop:Generator_RowClassName="EProfesorxClaseRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="idProfesor" msprop:Generator_ColumnVarNameInTable="columnidProfesor" msprop:Generator_ColumnPropNameInRow="idProfesor" msprop:Generator_ColumnPropNameInTable="idProfesorColumn" msprop:Generator_UserColumnName="idProfesor" type="xs:long" minOccurs="0" />
+              <xs:element name="nombreProfesor" msprop:Generator_ColumnVarNameInTable="columnnombreProfesor" msprop:Generator_ColumnPropNameInRow="nombreProfesor" msprop:Generator_ColumnPropNameInTable="nombreProfesorColumn" msprop:Generator_UserColumnName="nombreProfesor" type="xs:string" minOccurs="0" />
+              <xs:element name="idClase" msprop:Generator_ColumnVarNameInTable="columnidClase" msprop:Generator_ColumnPropNameInRow="idClase" msprop:Generator_ColumnPropNameInTable="idClaseColumn" msprop:Generator_UserColumnName="idClase" type="xs:long" minOccurs="0" />
+              <xs:element name="nombreClase" msprop:Generator_ColumnVarNameInTable="columnnombreClase" msprop:Generator_ColumnPropNameInRow="nombreClase" msprop:Generator_ColumnPropNameInTable="nombreClaseColumn" msprop:Generator_UserColumnName="nombreClase" type="xs:string" minOccurs="0" />
+              <xs:element name="dia" msprop:Generator_ColumnVarNameInTable="columndia" msprop:Generator_ColumnPropNameInRow="dia" msprop:Generator_ColumnPropNameInTable="diaColumn" msprop:Generator_UserColumnName="dia" type="xs:string" minOccurs="0" />
+              <xs:element name="horaInicio" msprop:Generator_ColumnVarNameInTable="columnhoraInicio" msprop:Generator_ColumnPropNameInRow="horaInicio" msprop:Generator_ColumnPropNameInTable="horaInicioColumn" msprop:Generator_UserColumnName="horaInicio" type="xs:string" minOccurs="0" />
+              <xs:element name="idProfesorxClase" msprop:Generator_ColumnVarNameInTable="columnidProfesorxClase" msprop:Generator_ColumnPropNameInRow="idProfesorxClase" msprop:Generator_ColumnPropNameInTable="idProfesorxClaseColumn" msprop:Generator_UserColumnName="idProfesorxClase" type="xs:long" minOccurs="0" />
+              <xs:element name="fechaHastaPxC" msprop:Generator_ColumnVarNameInTable="columnfechaHastaPxC" msprop:Generator_ColumnPropNameInRow="fechaHastaPxC" msprop:Generator_ColumnPropNameInTable="fechaHastaPxCColumn" msprop:Generator_UserColumnName="fechaHastaPxC" type="xs:dateTime" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,243 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BDGimnasioModelStoreContainer" CdmEntityContainer="BDGimnasioEntities">
+    <EntitySetMapping Name="Alumno">
+      <EntityTypeMapping TypeName="BDGimnasioModel.Alumno">
+        <MappingFragment StoreEntitySet="Alumno">
+          <ScalarProperty Name="idAlumno" ColumnName="idAlumno" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="apellido" ColumnName="apellido" />
+          <ScalarProperty Name="dni" ColumnName="dni" />
+          <ScalarProperty Name="direccion" ColumnName="direccion" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="fechaNac" ColumnName="fechaNac" />
+          <ScalarProperty Name="idCiudad" ColumnName="idCiudad" />
+          <ScalarProperty Name="observaciones" ColumnName="observaciones" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AlumnoxClase">
+      <EntityTypeMapping TypeName="BDGimnasioModel.AlumnoxClase">
+        <MappingFragment StoreEntitySet="AlumnoxClase">
+          <ScalarProperty Name="idAlumnoxClase" ColumnName="idAlumnoxClase" />
+          <ScalarProperty Name="idAlumno" ColumnName="idAlumno" />
+          <ScalarProperty Name="idProfesorxClase" ColumnName="idProfesorxClase" />
+          <ScalarProperty Name="fechaDesde" ColumnName="fechaDesde" />
+          <ScalarProperty Name="fechaHasta" ColumnName="fechaHasta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Asistencia">
+      <EntityTypeMapping TypeName="BDGimnasioModel.Asistencia">
+        <MappingFragment StoreEntitySet="Asistencia">
+          <ScalarProperty Name="idAsistencia" ColumnName="idAsistencia" />
+          <ScalarProperty Name="idAlumno" ColumnName="idAlumno" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ciudad">
+      <EntityTypeMapping TypeName="BDGimnasioModel.Ciudad">
+        <MappingFragment StoreEntitySet="Ciudad">
+          <ScalarProperty Name="idCiudad" ColumnName="idCiudad" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="idProvincia" ColumnName="idProvincia" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Clase">
+      <EntityTypeMapping TypeName="BDGimnasioModel.Clase">
+        <MappingFragment StoreEntitySet="Clase">
+          <ScalarProperty Name="idClase" ColumnName="idClase" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="fechaDesde" ColumnName="fechaDesde" />
+          <ScalarProperty Name="fechaHasta" ColumnName="fechaHasta" />
+          <ScalarProperty Name="cupoMaximo" ColumnName="cupoMaximo" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ejercicio">
+      <EntityTypeMapping TypeName="BDGimnasioModel.Ejercicio">
+        <MappingFragment StoreEntitySet="Ejercicio">
+          <ScalarProperty Name="idEjercicio" ColumnName="idEjercicio" />
+          <ScalarProperty Name="idMaquina" ColumnName="idMaquina" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="idTipoEjercicio" ColumnName="idTipoEjercicio" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EjercicioPlanAlumno">
+      <EntityTypeMapping TypeName="BDGimnasioModel.EjercicioPlanAlumno">
+        <MappingFragment StoreEntitySet="EjercicioPlanAlumno">
+          <ScalarProperty Name="idEjercicioPlanAlumno" ColumnName="idEjercicioPlanAlumno" />
+          <ScalarProperty Name="idEjercicio" ColumnName="idEjercicio" />
+          <ScalarProperty Name="idPlanxAlumno" ColumnName="idPlanxAlumno" />
+          <ScalarProperty Name="repeticiones" ColumnName="repeticiones" />
+          <ScalarProperty Name="series" ColumnName="series" />
+          <ScalarProperty Name="intensidadCarga" ColumnName="intensidadCarga" />
+          <ScalarProperty Name="observaciones" ColumnName="observaciones" />
+          <ScalarProperty Name="dia" ColumnName="dia" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EjercicioxPlan">
+      <EntityTypeMapping TypeName="BDGimnasioModel.EjercicioxPlan">
+        <MappingFragment StoreEntitySet="EjercicioxPlan">
+          <ScalarProperty Name="idEjercicioxPlan" ColumnName="idEjercicioxPlan" />
+          <ScalarProperty Name="idEjercicio" ColumnName="idEjercicio" />
+          <ScalarProperty Name="idPlan" ColumnName="idPlan" />
+          <ScalarProperty Name="repeticiones" ColumnName="repeticiones" />
+          <ScalarProperty Name="series" ColumnName="series" />
+          <ScalarProperty Name="observaciones" ColumnName="observaciones" />
+          <ScalarProperty Name="dia" ColumnName="dia" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Maquina">
+      <EntityTypeMapping TypeName="BDGimnasioModel.Maquina">
+        <MappingFragment StoreEntitySet="Maquina">
+          <ScalarProperty Name="idMaquina" ColumnName="idMaquina" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="fechaAlta" ColumnName="fechaAlta" />
+          <ScalarProperty Name="fechaBaja" ColumnName="fechaBaja" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Planes">
+      <EntityTypeMapping TypeName="BDGimnasioModel.Planes">
+        <MappingFragment StoreEntitySet="Planes">
+          <ScalarProperty Name="idPlan" ColumnName="idPlan" />
+          <ScalarProperty Name="idTipoPlan" ColumnName="idTipoPlan" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PlanxAlumno">
+      <EntityTypeMapping TypeName="BDGimnasioModel.PlanxAlumno">
+        <MappingFragment StoreEntitySet="PlanxAlumno">
+          <ScalarProperty Name="idPlanxAlumno" ColumnName="idPlanxAlumno" />
+          <ScalarProperty Name="idPlan" ColumnName="idPlan" />
+          <ScalarProperty Name="idAlumno" ColumnName="idAlumno" />
+          <ScalarProperty Name="nro" ColumnName="nro" />
+          <ScalarProperty Name="fechaDesde" ColumnName="fechaDesde" />
+          <ScalarProperty Name="fechaHasta" ColumnName="fechaHasta" />
+          <ScalarProperty Name="idProfesor" ColumnName="idProfesor" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Profesor">
+      <EntityTypeMapping TypeName="BDGimnasioModel.Profesor">
+        <MappingFragment StoreEntitySet="Profesor">
+          <ScalarProperty Name="idProfesor" ColumnName="idProfesor" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="apellido" ColumnName="apellido" />
+          <ScalarProperty Name="dni" ColumnName="dni" />
+          <ScalarProperty Name="direccion" ColumnName="direccion" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="fechaNac" ColumnName="fechaNac" />
+          <ScalarProperty Name="idCiudad" ColumnName="idCiudad" />
+          <ScalarProperty Name="observaciones" ColumnName="observaciones" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProfesorxClase">
+      <EntityTypeMapping TypeName="BDGimnasioModel.ProfesorxClase">
+        <MappingFragment StoreEntitySet="ProfesorxClase">
+          <ScalarProperty Name="idProfesorxClase" ColumnName="idProfesorxClase" />
+          <ScalarProperty Name="idProfesor" ColumnName="idProfesor" />
+          <ScalarProperty Name="idClase" ColumnName="idClase" />
+          <ScalarProperty Name="fechaDesde" ColumnName="fechaDesde" />
+          <ScalarProperty Name="fechaHasta" ColumnName="fechaHasta" />
+          <ScalarProperty Name="dia" ColumnName="dia" />
+          <ScalarProperty Name="horaInicio" ColumnName="horaInicio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Provincia">
+      <EntityTypeMapping TypeName="BDGimnasioModel.Provincia">
+        <MappingFragment StoreEntitySet="Provincia">
+          <ScalarProperty Name="idProvincia" ColumnName="idProvincia" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TipoEjercicio">
+      <EntityTypeMapping TypeName="BDGimnasioModel.TipoEjercicio">
+        <MappingFragment StoreEntitySet="TipoEjercicio">
+          <ScalarProperty Name="idTipoEjercicio" ColumnName="idTipoEjercicio" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TipoPlan">
+      <EntityTypeMapping TypeName="BDGimnasioModel.TipoPlan">
+        <MappingFragment StoreEntitySet="TipoPlan">
+          <ScalarProperty Name="idTipoPlan" ColumnName="idTipoPlan" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Titulo">
+      <EntityTypeMapping TypeName="BDGimnasioModel.Titulo">
+        <MappingFragment StoreEntitySet="Titulo">
+          <ScalarProperty Name="idTitulo" ColumnName="idTitulo" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TituloxProfesor">
+      <EntityTypeMapping TypeName="BDGimnasioModel.TituloxProfesor">
+        <MappingFragment StoreEntitySet="TituloxProfesor">
+          <ScalarProperty Name="idTituloxProfesor" ColumnName="idTituloxProfesor" />
+          <ScalarProperty Name="idTitulo" ColumnName="idTitulo" />
+          <ScalarProperty Name="idProfesor" ColumnName="idProfesor" />
+          <ScalarProperty Name="fechaEgreso" ColumnName="fechaEgreso" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vPlanPersonalizado">
+      <EntityTypeMapping TypeName="BDGimnasioModel.vPlanPersonalizado">
+        <MappingFragment StoreEntitySet="vPlanPersonalizado">
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="DNI" ColumnName="DNI" />
+          <ScalarProperty Name="Alumno" ColumnName="Alumno" />
+          <ScalarProperty Name="fechaDesde" ColumnName="fechaDesde" />
+          <ScalarProperty Name="idPxA" ColumnName="idPxA" />
+          <ScalarProperty Name="idAlumno" ColumnName="idAlumno" />
+          <ScalarProperty Name="PlanBase" ColumnName="PlanBase" />
+          <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+          <ScalarProperty Name="Dia" ColumnName="Dia" />
+          <ScalarProperty Name="Maquina" ColumnName="Maquina" />
+          <ScalarProperty Name="Repeticiones" ColumnName="Repeticiones" />
+          <ScalarProperty Name="Series" ColumnName="Series" />
+          <ScalarProperty Name="Ejercicio" ColumnName="Ejercicio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Usuario">
+      <EntityTypeMapping TypeName="BDGimnasioModel.Usuario">
+        <MappingFragment StoreEntitySet="Usuario">
+          <ScalarProperty Name="contraseña" ColumnName="contraseña" />
+          <ScalarProperty Name="usuario1" ColumnName="usuario" />
+          <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,1459 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="BDGimnasioModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Alumno">
+          <Key>
+            <PropertyRef Name="idAlumno" />
+          </Key>
+          <Property Name="idAlumno" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar" MaxLength="100" />
+          <Property Name="apellido" Type="nvarchar" MaxLength="100" />
+          <Property Name="dni" Type="nvarchar" MaxLength="50" />
+          <Property Name="direccion" Type="nvarchar" MaxLength="100" />
+          <Property Name="telefono" Type="nvarchar" MaxLength="50" />
+          <Property Name="email" Type="nvarchar" MaxLength="100" />
+          <Property Name="fechaNac" Type="date" />
+          <Property Name="idCiudad" Type="int" />
+          <Property Name="observaciones" Type="nvarchar" MaxLength="4000" />
+          <Property Name="estado" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="AlumnoxClase">
+          <Key>
+            <PropertyRef Name="idAlumnoxClase" />
+          </Key>
+          <Property Name="idAlumnoxClase" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idAlumno" Type="int" />
+          <Property Name="idProfesorxClase" Type="int" />
+          <Property Name="fechaDesde" Type="date" />
+          <Property Name="fechaHasta" Type="date" />
+        </EntityType>
+        <EntityType Name="Asistencia">
+          <Key>
+            <PropertyRef Name="idAsistencia" />
+          </Key>
+          <Property Name="idAsistencia" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idAlumno" Type="int" />
+          <Property Name="fecha" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Ciudad">
+          <Key>
+            <PropertyRef Name="idCiudad" />
+          </Key>
+          <Property Name="idCiudad" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar" MaxLength="100" />
+          <Property Name="idProvincia" Type="int" />
+        </EntityType>
+        <EntityType Name="Clase">
+          <Key>
+            <PropertyRef Name="idClase" />
+          </Key>
+          <Property Name="idClase" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar" MaxLength="100" />
+          <Property Name="fechaDesde" Type="date" />
+          <Property Name="fechaHasta" Type="date" />
+          <Property Name="cupoMaximo" Type="int" />
+          <Property Name="descripcion" Type="nvarchar" MaxLength="4000" />
+          <Property Name="estado" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="Ejercicio">
+          <Key>
+            <PropertyRef Name="idEjercicio" />
+          </Key>
+          <Property Name="idEjercicio" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idMaquina" Type="int" />
+          <Property Name="nombre" Type="nvarchar" MaxLength="100" />
+          <Property Name="descripcion" Type="nvarchar" MaxLength="4000" />
+          <Property Name="idTipoEjercicio" Type="int" />
+          <Property Name="estado" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="EjercicioPlanAlumno">
+          <Key>
+            <PropertyRef Name="idEjercicioPlanAlumno" />
+          </Key>
+          <Property Name="idEjercicioPlanAlumno" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idEjercicio" Type="int" Nullable="false" />
+          <Property Name="idPlanxAlumno" Type="int" />
+          <Property Name="repeticiones" Type="int" />
+          <Property Name="series" Type="int" />
+          <Property Name="intensidadCarga" Type="nvarchar" MaxLength="100" />
+          <Property Name="observaciones" Type="nvarchar" MaxLength="4000" />
+          <Property Name="dia" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="EjercicioxPlan">
+          <Key>
+            <PropertyRef Name="idEjercicioxPlan" />
+          </Key>
+          <Property Name="idEjercicioxPlan" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idEjercicio" Type="int" Nullable="false" />
+          <Property Name="idPlan" Type="int" Nullable="false" />
+          <Property Name="repeticiones" Type="int" />
+          <Property Name="series" Type="int" />
+          <Property Name="observaciones" Type="nvarchar" MaxLength="4000" />
+          <Property Name="dia" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="Maquina">
+          <Key>
+            <PropertyRef Name="idMaquina" />
+          </Key>
+          <Property Name="idMaquina" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar" MaxLength="100" />
+          <Property Name="descripcion" Type="nvarchar" MaxLength="4000" />
+          <Property Name="fechaAlta" Type="date" />
+          <Property Name="fechaBaja" Type="date" />
+          <Property Name="estado" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="Planes">
+          <Key>
+            <PropertyRef Name="idPlan" />
+          </Key>
+          <Property Name="idPlan" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idTipoPlan" Type="int" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar" MaxLength="100" />
+          <Property Name="descripcion" Type="nvarchar" MaxLength="4000" />
+          <Property Name="estado" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="PlanxAlumno">
+          <Key>
+            <PropertyRef Name="idPlanxAlumno" />
+          </Key>
+          <Property Name="idPlanxAlumno" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idPlan" Type="int" />
+          <Property Name="idAlumno" Type="int" />
+          <Property Name="nro" Type="int" />
+          <Property Name="fechaDesde" Type="date" />
+          <Property Name="fechaHasta" Type="date" />
+          <Property Name="idProfesor" Type="int" />
+        </EntityType>
+        <EntityType Name="Profesor">
+          <Key>
+            <PropertyRef Name="idProfesor" />
+          </Key>
+          <Property Name="idProfesor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar" MaxLength="100" />
+          <Property Name="apellido" Type="nvarchar" MaxLength="100" />
+          <Property Name="dni" Type="nvarchar" MaxLength="50" />
+          <Property Name="direccion" Type="nvarchar" MaxLength="100" />
+          <Property Name="telefono" Type="nvarchar" MaxLength="50" />
+          <Property Name="email" Type="nvarchar" MaxLength="100" />
+          <Property Name="fechaNac" Type="date" />
+          <Property Name="idCiudad" Type="int" />
+          <Property Name="observaciones" Type="nvarchar" MaxLength="4000" />
+          <Property Name="estado" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="ProfesorxClase">
+          <Key>
+            <PropertyRef Name="idProfesorxClase" />
+          </Key>
+          <Property Name="idProfesorxClase" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idProfesor" Type="int" Nullable="false" />
+          <Property Name="idClase" Type="int" Nullable="false" />
+          <Property Name="fechaDesde" Type="date" />
+          <Property Name="fechaHasta" Type="date" />
+          <Property Name="dia" Type="nvarchar" MaxLength="15" />
+          <Property Name="horaInicio" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Provincia">
+          <Key>
+            <PropertyRef Name="idProvincia" />
+          </Key>
+          <Property Name="idProvincia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="TipoEjercicio">
+          <Key>
+            <PropertyRef Name="idTipoEjercicio" />
+          </Key>
+          <Property Name="idTipoEjercicio" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar" MaxLength="100" />
+          <Property Name="descripcion" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="TipoPlan">
+          <Key>
+            <PropertyRef Name="idTipoPlan" />
+          </Key>
+          <Property Name="idTipoPlan" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar" MaxLength="100" />
+          <Property Name="descripcion" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="Titulo">
+          <Key>
+            <PropertyRef Name="idTitulo" />
+          </Key>
+          <Property Name="idTitulo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="TituloxProfesor">
+          <Key>
+            <PropertyRef Name="idTituloxProfesor" />
+          </Key>
+          <Property Name="idTituloxProfesor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idTitulo" Type="int" />
+          <Property Name="idProfesor" Type="int" />
+          <Property Name="fechaEgreso" Type="date" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="idUsuario" />
+          </Key>
+          <Property Name="idUsuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="usuario" Type="nvarchar" MaxLength="50" />
+          <Property Name="contraseña" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'BDGimnasio.dbo.vPlanPersonalizado' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="vPlanPersonalizado">
+          <Key>
+            <PropertyRef Name="Alumno" />
+          </Key>
+          <Property Name="Ejercicio" Type="nvarchar" MaxLength="100" />
+          <Property Name="Series" Type="int" />
+          <Property Name="Repeticiones" Type="int" />
+          <Property Name="Maquina" Type="nvarchar" MaxLength="100" />
+          <Property Name="Dia" Type="varchar" MaxLength="1" />
+          <Property Name="Observaciones" Type="nvarchar" MaxLength="4000" />
+          <Property Name="PlanBase" Type="nvarchar" MaxLength="100" />
+          <Property Name="idAlumno" Type="int" />
+          <Property Name="idPxA" Type="int" />
+          <Property Name="fechaDesde" Type="date" />
+          <Property Name="Alumno" Type="nvarchar" MaxLength="201" Nullable="false" />
+          <Property Name="DNI" Type="nvarchar" MaxLength="50" />
+          <Property Name="Direccion" Type="nvarchar" MaxLength="100" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+          <Property Name="Telefono" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="fk_Alumno_Ciudad">
+          <End Role="Ciudad" Type="Self.Ciudad" Multiplicity="0..1" />
+          <End Role="Alumno" Type="Self.Alumno" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ciudad">
+              <PropertyRef Name="idCiudad" />
+            </Principal>
+            <Dependent Role="Alumno">
+              <PropertyRef Name="idCiudad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_AlumnoxClase_Alumno">
+          <End Role="Alumno" Type="Self.Alumno" Multiplicity="0..1" />
+          <End Role="AlumnoxClase" Type="Self.AlumnoxClase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Alumno">
+              <PropertyRef Name="idAlumno" />
+            </Principal>
+            <Dependent Role="AlumnoxClase">
+              <PropertyRef Name="idAlumno" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_AlumnoxClase_ProfesorxClase">
+          <End Role="ProfesorxClase" Type="Self.ProfesorxClase" Multiplicity="0..1" />
+          <End Role="AlumnoxClase" Type="Self.AlumnoxClase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProfesorxClase">
+              <PropertyRef Name="idProfesorxClase" />
+            </Principal>
+            <Dependent Role="AlumnoxClase">
+              <PropertyRef Name="idProfesorxClase" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Asistencia_Alumno">
+          <End Role="Alumno" Type="Self.Alumno" Multiplicity="0..1" />
+          <End Role="Asistencia" Type="Self.Asistencia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Alumno">
+              <PropertyRef Name="idAlumno" />
+            </Principal>
+            <Dependent Role="Asistencia">
+              <PropertyRef Name="idAlumno" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Ciudad_Provincia">
+          <End Role="Provincia" Type="Self.Provincia" Multiplicity="0..1" />
+          <End Role="Ciudad" Type="Self.Ciudad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Provincia">
+              <PropertyRef Name="idProvincia" />
+            </Principal>
+            <Dependent Role="Ciudad">
+              <PropertyRef Name="idProvincia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Ejercicio_Maquina">
+          <End Role="Maquina" Type="Self.Maquina" Multiplicity="0..1" />
+          <End Role="Ejercicio" Type="Self.Ejercicio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Maquina">
+              <PropertyRef Name="idMaquina" />
+            </Principal>
+            <Dependent Role="Ejercicio">
+              <PropertyRef Name="idMaquina" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Ejercicio_TipoEjercicio">
+          <End Role="TipoEjercicio" Type="Self.TipoEjercicio" Multiplicity="0..1" />
+          <End Role="Ejercicio" Type="Self.Ejercicio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoEjercicio">
+              <PropertyRef Name="idTipoEjercicio" />
+            </Principal>
+            <Dependent Role="Ejercicio">
+              <PropertyRef Name="idTipoEjercicio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_EjercicioPlanAlumno_Ejercicio">
+          <End Role="Ejercicio" Type="Self.Ejercicio" Multiplicity="1" />
+          <End Role="EjercicioPlanAlumno" Type="Self.EjercicioPlanAlumno" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ejercicio">
+              <PropertyRef Name="idEjercicio" />
+            </Principal>
+            <Dependent Role="EjercicioPlanAlumno">
+              <PropertyRef Name="idEjercicio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_EjercicioPlanAlumno_PlanxAlumno">
+          <End Role="PlanxAlumno" Type="Self.PlanxAlumno" Multiplicity="0..1" />
+          <End Role="EjercicioPlanAlumno" Type="Self.EjercicioPlanAlumno" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PlanxAlumno">
+              <PropertyRef Name="idPlanxAlumno" />
+            </Principal>
+            <Dependent Role="EjercicioPlanAlumno">
+              <PropertyRef Name="idPlanxAlumno" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_EjercicioxPlan_Ejercicio">
+          <End Role="Ejercicio" Type="Self.Ejercicio" Multiplicity="1" />
+          <End Role="EjercicioxPlan" Type="Self.EjercicioxPlan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ejercicio">
+              <PropertyRef Name="idEjercicio" />
+            </Principal>
+            <Dependent Role="EjercicioxPlan">
+              <PropertyRef Name="idEjercicio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_EjercicioxPlan_Plan">
+          <End Role="Planes" Type="Self.Planes" Multiplicity="1" />
+          <End Role="EjercicioxPlan" Type="Self.EjercicioxPlan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Planes">
+              <PropertyRef Name="idPlan" />
+            </Principal>
+            <Dependent Role="EjercicioxPlan">
+              <PropertyRef Name="idPlan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Planes_TipoPlan">
+          <End Role="TipoPlan" Type="Self.TipoPlan" Multiplicity="1" />
+          <End Role="Planes" Type="Self.Planes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoPlan">
+              <PropertyRef Name="idTipoPlan" />
+            </Principal>
+            <Dependent Role="Planes">
+              <PropertyRef Name="idTipoPlan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_PlanxAlumno_Alumno">
+          <End Role="Alumno" Type="Self.Alumno" Multiplicity="0..1" />
+          <End Role="PlanxAlumno" Type="Self.PlanxAlumno" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Alumno">
+              <PropertyRef Name="idAlumno" />
+            </Principal>
+            <Dependent Role="PlanxAlumno">
+              <PropertyRef Name="idAlumno" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_PlanxAlumno_Planes">
+          <End Role="Planes" Type="Self.Planes" Multiplicity="0..1" />
+          <End Role="PlanxAlumno" Type="Self.PlanxAlumno" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Planes">
+              <PropertyRef Name="idPlan" />
+            </Principal>
+            <Dependent Role="PlanxAlumno">
+              <PropertyRef Name="idPlan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_PlanxAlumno_Profesor">
+          <End Role="Profesor" Type="Self.Profesor" Multiplicity="0..1" />
+          <End Role="PlanxAlumno" Type="Self.PlanxAlumno" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Profesor">
+              <PropertyRef Name="idProfesor" />
+            </Principal>
+            <Dependent Role="PlanxAlumno">
+              <PropertyRef Name="idProfesor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Profesor_Ciudad">
+          <End Role="Ciudad" Type="Self.Ciudad" Multiplicity="0..1" />
+          <End Role="Profesor" Type="Self.Profesor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ciudad">
+              <PropertyRef Name="idCiudad" />
+            </Principal>
+            <Dependent Role="Profesor">
+              <PropertyRef Name="idCiudad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ProfesorxClase_Clase">
+          <End Role="Clase" Type="Self.Clase" Multiplicity="1" />
+          <End Role="ProfesorxClase" Type="Self.ProfesorxClase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clase">
+              <PropertyRef Name="idClase" />
+            </Principal>
+            <Dependent Role="ProfesorxClase">
+              <PropertyRef Name="idClase" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ProfesorxClase_Profesor">
+          <End Role="Profesor" Type="Self.Profesor" Multiplicity="1" />
+          <End Role="ProfesorxClase" Type="Self.ProfesorxClase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Profesor">
+              <PropertyRef Name="idProfesor" />
+            </Principal>
+            <Dependent Role="ProfesorxClase">
+              <PropertyRef Name="idProfesor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_TituloxProfesor_Profesor">
+          <End Role="Profesor" Type="Self.Profesor" Multiplicity="0..1" />
+          <End Role="TituloxProfesor" Type="Self.TituloxProfesor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Profesor">
+              <PropertyRef Name="idProfesor" />
+            </Principal>
+            <Dependent Role="TituloxProfesor">
+              <PropertyRef Name="idProfesor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_TituloxProfesor_Titulo">
+          <End Role="Titulo" Type="Self.Titulo" Multiplicity="0..1" />
+          <End Role="TituloxProfesor" Type="Self.TituloxProfesor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Titulo">
+              <PropertyRef Name="idTitulo" />
+            </Principal>
+            <Dependent Role="TituloxProfesor">
+              <PropertyRef Name="idTitulo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BDGimnasioModelStoreContainer">
+          <EntitySet Name="Alumno" EntityType="Self.Alumno" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AlumnoxClase" EntityType="Self.AlumnoxClase" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Asistencia" EntityType="Self.Asistencia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ciudad" EntityType="Self.Ciudad" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Clase" EntityType="Self.Clase" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ejercicio" EntityType="Self.Ejercicio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EjercicioPlanAlumno" EntityType="Self.EjercicioPlanAlumno" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EjercicioxPlan" EntityType="Self.EjercicioxPlan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Maquina" EntityType="Self.Maquina" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Planes" EntityType="Self.Planes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PlanxAlumno" EntityType="Self.PlanxAlumno" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Profesor" EntityType="Self.Profesor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProfesorxClase" EntityType="Self.ProfesorxClase" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Provincia" EntityType="Self.Provincia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoEjercicio" EntityType="Self.TipoEjercicio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoPlan" EntityType="Self.TipoPlan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Titulo" EntityType="Self.Titulo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TituloxProfesor" EntityType="Self.TituloxProfesor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vPlanPersonalizado" EntityType="Self.vPlanPersonalizado" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vPlanPersonalizado].[Ejercicio] AS [Ejercicio], 
+    [vPlanPersonalizado].[Series] AS [Series], 
+    [vPlanPersonalizado].[Repeticiones] AS [Repeticiones], 
+    [vPlanPersonalizado].[Maquina] AS [Maquina], 
+    [vPlanPersonalizado].[Dia] AS [Dia], 
+    [vPlanPersonalizado].[Observaciones] AS [Observaciones], 
+    [vPlanPersonalizado].[PlanBase] AS [PlanBase], 
+    [vPlanPersonalizado].[idAlumno] AS [idAlumno], 
+    [vPlanPersonalizado].[idPxA] AS [idPxA], 
+    [vPlanPersonalizado].[fechaDesde] AS [fechaDesde], 
+    [vPlanPersonalizado].[Alumno] AS [Alumno], 
+    [vPlanPersonalizado].[DNI] AS [DNI], 
+    [vPlanPersonalizado].[Direccion] AS [Direccion], 
+    [vPlanPersonalizado].[Email] AS [Email], 
+    [vPlanPersonalizado].[Telefono] AS [Telefono]
+    FROM [dbo].[vPlanPersonalizado] AS [vPlanPersonalizado]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="fk_Alumno_Ciudad" Association="Self.fk_Alumno_Ciudad">
+            <End Role="Ciudad" EntitySet="Ciudad" />
+            <End Role="Alumno" EntitySet="Alumno" />
+          </AssociationSet>
+          <AssociationSet Name="fk_AlumnoxClase_Alumno" Association="Self.fk_AlumnoxClase_Alumno">
+            <End Role="Alumno" EntitySet="Alumno" />
+            <End Role="AlumnoxClase" EntitySet="AlumnoxClase" />
+          </AssociationSet>
+          <AssociationSet Name="fk_AlumnoxClase_ProfesorxClase" Association="Self.fk_AlumnoxClase_ProfesorxClase">
+            <End Role="ProfesorxClase" EntitySet="ProfesorxClase" />
+            <End Role="AlumnoxClase" EntitySet="AlumnoxClase" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Asistencia_Alumno" Association="Self.fk_Asistencia_Alumno">
+            <End Role="Alumno" EntitySet="Alumno" />
+            <End Role="Asistencia" EntitySet="Asistencia" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Ciudad_Provincia" Association="Self.fk_Ciudad_Provincia">
+            <End Role="Provincia" EntitySet="Provincia" />
+            <End Role="Ciudad" EntitySet="Ciudad" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Ejercicio_Maquina" Association="Self.fk_Ejercicio_Maquina">
+            <End Role="Maquina" EntitySet="Maquina" />
+            <End Role="Ejercicio" EntitySet="Ejercicio" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Ejercicio_TipoEjercicio" Association="Self.fk_Ejercicio_TipoEjercicio">
+            <End Role="TipoEjercicio" EntitySet="TipoEjercicio" />
+            <End Role="Ejercicio" EntitySet="Ejercicio" />
+          </AssociationSet>
+          <AssociationSet Name="fk_EjercicioPlanAlumno_Ejercicio" Association="Self.fk_EjercicioPlanAlumno_Ejercicio">
+            <End Role="Ejercicio" EntitySet="Ejercicio" />
+            <End Role="EjercicioPlanAlumno" EntitySet="EjercicioPlanAlumno" />
+          </AssociationSet>
+          <AssociationSet Name="fk_EjercicioPlanAlumno_PlanxAlumno" Association="Self.fk_EjercicioPlanAlumno_PlanxAlumno">
+            <End Role="PlanxAlumno" EntitySet="PlanxAlumno" />
+            <End Role="EjercicioPlanAlumno" EntitySet="EjercicioPlanAlumno" />
+          </AssociationSet>
+          <AssociationSet Name="fk_EjercicioxPlan_Ejercicio" Association="Self.fk_EjercicioxPlan_Ejercicio">
+            <End Role="Ejercicio" EntitySet="Ejercicio" />
+            <End Role="EjercicioxPlan" EntitySet="EjercicioxPlan" />
+          </AssociationSet>
+          <AssociationSet Name="fk_EjercicioxPlan_Plan" Association="Self.fk_EjercicioxPlan_Plan">
+            <End Role="Planes" EntitySet="Planes" />
+            <End Role="EjercicioxPlan" EntitySet="EjercicioxPlan" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Planes_TipoPlan" Association="Self.fk_Planes_TipoPlan">
+            <End Role="TipoPlan" EntitySet="TipoPlan" />
+            <End Role="Planes" EntitySet="Planes" />
+          </AssociationSet>
+          <AssociationSet Name="fk_PlanxAlumno_Alumno" Association="Self.fk_PlanxAlumno_Alumno">
+            <End Role="Alumno" EntitySet="Alumno" />
+            <End Role="PlanxAlumno" EntitySet="PlanxAlumno" />
+          </AssociationSet>
+          <AssociationSet Name="fk_PlanxAlumno_Planes" Association="Self.fk_PlanxAlumno_Planes">
+            <End Role="Planes" EntitySet="Planes" />
+            <End Role="PlanxAlumno" EntitySet="PlanxAlumno" />
+          </AssociationSet>
+          <AssociationSet Name="fk_PlanxAlumno_Profesor" Association="Self.fk_PlanxAlumno_Profesor">
+            <End Role="Profesor" EntitySet="Profesor" />
+            <End Role="PlanxAlumno" EntitySet="PlanxAlumno" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Profesor_Ciudad" Association="Self.fk_Profesor_Ciudad">
+            <End Role="Ciudad" EntitySet="Ciudad" />
+            <End Role="Profesor" EntitySet="Profesor" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ProfesorxClase_Clase" Association="Self.fk_ProfesorxClase_Clase">
+            <End Role="Clase" EntitySet="Clase" />
+            <End Role="ProfesorxClase" EntitySet="ProfesorxClase" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ProfesorxClase_Profesor" Association="Self.fk_ProfesorxClase_Profesor">
+            <End Role="Profesor" EntitySet="Profesor" />
+            <End Role="ProfesorxClase" EntitySet="ProfesorxClase" />
+          </AssociationSet>
+          <AssociationSet Name="fk_TituloxProfesor_Profesor" Association="Self.fk_TituloxProfesor_Profesor">
+            <End Role="Profesor" EntitySet="Profesor" />
+            <End Role="TituloxProfesor" EntitySet="TituloxProfesor" />
+          </AssociationSet>
+          <AssociationSet Name="fk_TituloxProfesor_Titulo" Association="Self.fk_TituloxProfesor_Titulo">
+            <End Role="Titulo" EntitySet="Titulo" />
+            <End Role="TituloxProfesor" EntitySet="TituloxProfesor" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BDGimnasioModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Alumno">
+          <Key>
+            <PropertyRef Name="idAlumno" />
+          </Key>
+          <Property Name="idAlumno" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="apellido" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="dni" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="direccion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="fechaNac" Type="DateTime" Precision="0" />
+          <Property Name="idCiudad" Type="Int32" />
+          <Property Name="observaciones" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="estado" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Ciudad" Relationship="Self.fk_Alumno_Ciudad" FromRole="Alumno" ToRole="Ciudad" />
+          <NavigationProperty Name="AlumnoxClase" Relationship="Self.fk_AlumnoxClase_Alumno" FromRole="Alumno" ToRole="AlumnoxClase" />
+          <NavigationProperty Name="Asistencia" Relationship="Self.fk_Asistencia_Alumno" FromRole="Alumno" ToRole="Asistencia" />
+          <NavigationProperty Name="PlanxAlumno" Relationship="Self.fk_PlanxAlumno_Alumno" FromRole="Alumno" ToRole="PlanxAlumno" />
+        </EntityType>
+        <EntityType Name="AlumnoxClase">
+          <Key>
+            <PropertyRef Name="idAlumnoxClase" />
+          </Key>
+          <Property Name="idAlumnoxClase" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idAlumno" Type="Int32" />
+          <Property Name="idProfesorxClase" Type="Int32" />
+          <Property Name="fechaDesde" Type="DateTime" Precision="0" />
+          <Property Name="fechaHasta" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Alumno" Relationship="Self.fk_AlumnoxClase_Alumno" FromRole="AlumnoxClase" ToRole="Alumno" />
+          <NavigationProperty Name="ProfesorxClase" Relationship="Self.fk_AlumnoxClase_ProfesorxClase" FromRole="AlumnoxClase" ToRole="ProfesorxClase" />
+        </EntityType>
+        <EntityType Name="Asistencia">
+          <Key>
+            <PropertyRef Name="idAsistencia" />
+          </Key>
+          <Property Name="idAsistencia" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idAlumno" Type="Int32" />
+          <Property Name="fecha" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Alumno" Relationship="Self.fk_Asistencia_Alumno" FromRole="Asistencia" ToRole="Alumno" />
+        </EntityType>
+        <EntityType Name="Ciudad">
+          <Key>
+            <PropertyRef Name="idCiudad" />
+          </Key>
+          <Property Name="idCiudad" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="idProvincia" Type="Int32" />
+          <NavigationProperty Name="Alumno" Relationship="Self.fk_Alumno_Ciudad" FromRole="Ciudad" ToRole="Alumno" />
+          <NavigationProperty Name="Provincia" Relationship="Self.fk_Ciudad_Provincia" FromRole="Ciudad" ToRole="Provincia" />
+          <NavigationProperty Name="Profesor" Relationship="Self.fk_Profesor_Ciudad" FromRole="Ciudad" ToRole="Profesor" />
+        </EntityType>
+        <EntityType Name="Clase">
+          <Key>
+            <PropertyRef Name="idClase" />
+          </Key>
+          <Property Name="idClase" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="fechaDesde" Type="DateTime" Precision="0" />
+          <Property Name="fechaHasta" Type="DateTime" Precision="0" />
+          <Property Name="cupoMaximo" Type="Int32" />
+          <Property Name="descripcion" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="estado" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ProfesorxClase" Relationship="Self.fk_ProfesorxClase_Clase" FromRole="Clase" ToRole="ProfesorxClase" />
+        </EntityType>
+        <EntityType Name="Ejercicio">
+          <Key>
+            <PropertyRef Name="idEjercicio" />
+          </Key>
+          <Property Name="idEjercicio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idMaquina" Type="Int32" />
+          <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="descripcion" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="idTipoEjercicio" Type="Int32" />
+          <Property Name="estado" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Maquina" Relationship="Self.fk_Ejercicio_Maquina" FromRole="Ejercicio" ToRole="Maquina" />
+          <NavigationProperty Name="TipoEjercicio" Relationship="Self.fk_Ejercicio_TipoEjercicio" FromRole="Ejercicio" ToRole="TipoEjercicio" />
+          <NavigationProperty Name="EjercicioPlanAlumno" Relationship="Self.fk_EjercicioPlanAlumno_Ejercicio" FromRole="Ejercicio" ToRole="EjercicioPlanAlumno" />
+          <NavigationProperty Name="EjercicioxPlan" Relationship="Self.fk_EjercicioxPlan_Ejercicio" FromRole="Ejercicio" ToRole="EjercicioxPlan" />
+        </EntityType>
+        <EntityType Name="EjercicioPlanAlumno">
+          <Key>
+            <PropertyRef Name="idEjercicioPlanAlumno" />
+          </Key>
+          <Property Name="idEjercicioPlanAlumno" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idEjercicio" Type="Int32" Nullable="false" />
+          <Property Name="idPlanxAlumno" Type="Int32" />
+          <Property Name="repeticiones" Type="Int32" />
+          <Property Name="series" Type="Int32" />
+          <Property Name="intensidadCarga" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="observaciones" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="dia" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Ejercicio" Relationship="Self.fk_EjercicioPlanAlumno_Ejercicio" FromRole="EjercicioPlanAlumno" ToRole="Ejercicio" />
+          <NavigationProperty Name="PlanxAlumno" Relationship="Self.fk_EjercicioPlanAlumno_PlanxAlumno" FromRole="EjercicioPlanAlumno" ToRole="PlanxAlumno" />
+        </EntityType>
+        <EntityType Name="EjercicioxPlan">
+          <Key>
+            <PropertyRef Name="idEjercicioxPlan" />
+          </Key>
+          <Property Name="idEjercicioxPlan" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idEjercicio" Type="Int32" Nullable="false" />
+          <Property Name="idPlan" Type="Int32" Nullable="false" />
+          <Property Name="repeticiones" Type="Int32" />
+          <Property Name="series" Type="Int32" />
+          <Property Name="observaciones" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="dia" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Ejercicio" Relationship="Self.fk_EjercicioxPlan_Ejercicio" FromRole="EjercicioxPlan" ToRole="Ejercicio" />
+          <NavigationProperty Name="Planes" Relationship="Self.fk_EjercicioxPlan_Plan" FromRole="EjercicioxPlan" ToRole="Planes" />
+        </EntityType>
+        <EntityType Name="Maquina">
+          <Key>
+            <PropertyRef Name="idMaquina" />
+          </Key>
+          <Property Name="idMaquina" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="descripcion" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="fechaAlta" Type="DateTime" Precision="0" />
+          <Property Name="fechaBaja" Type="DateTime" Precision="0" />
+          <Property Name="estado" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Ejercicio" Relationship="Self.fk_Ejercicio_Maquina" FromRole="Maquina" ToRole="Ejercicio" />
+        </EntityType>
+        <EntityType Name="Planes">
+          <Key>
+            <PropertyRef Name="idPlan" />
+          </Key>
+          <Property Name="idPlan" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idTipoPlan" Type="Int32" Nullable="false" />
+          <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="descripcion" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="estado" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="EjercicioxPlan" Relationship="Self.fk_EjercicioxPlan_Plan" FromRole="Planes" ToRole="EjercicioxPlan" />
+          <NavigationProperty Name="TipoPlan" Relationship="Self.fk_Planes_TipoPlan" FromRole="Planes" ToRole="TipoPlan" />
+          <NavigationProperty Name="PlanxAlumno" Relationship="Self.fk_PlanxAlumno_Planes" FromRole="Planes" ToRole="PlanxAlumno" />
+        </EntityType>
+        <EntityType Name="PlanxAlumno">
+          <Key>
+            <PropertyRef Name="idPlanxAlumno" />
+          </Key>
+          <Property Name="idPlanxAlumno" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idPlan" Type="Int32" />
+          <Property Name="idAlumno" Type="Int32" />
+          <Property Name="nro" Type="Int32" />
+          <Property Name="fechaDesde" Type="DateTime" Precision="0" />
+          <Property Name="fechaHasta" Type="DateTime" Precision="0" />
+          <Property Name="idProfesor" Type="Int32" />
+          <NavigationProperty Name="Alumno" Relationship="Self.fk_PlanxAlumno_Alumno" FromRole="PlanxAlumno" ToRole="Alumno" />
+          <NavigationProperty Name="EjercicioPlanAlumno" Relationship="Self.fk_EjercicioPlanAlumno_PlanxAlumno" FromRole="PlanxAlumno" ToRole="EjercicioPlanAlumno" />
+          <NavigationProperty Name="Planes" Relationship="Self.fk_PlanxAlumno_Planes" FromRole="PlanxAlumno" ToRole="Planes" />
+          <NavigationProperty Name="Profesor" Relationship="Self.fk_PlanxAlumno_Profesor" FromRole="PlanxAlumno" ToRole="Profesor" />
+        </EntityType>
+        <EntityType Name="Profesor">
+          <Key>
+            <PropertyRef Name="idProfesor" />
+          </Key>
+          <Property Name="idProfesor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="apellido" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="dni" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="direccion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="fechaNac" Type="DateTime" Precision="0" />
+          <Property Name="idCiudad" Type="Int32" />
+          <Property Name="observaciones" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="estado" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Ciudad" Relationship="Self.fk_Profesor_Ciudad" FromRole="Profesor" ToRole="Ciudad" />
+          <NavigationProperty Name="PlanxAlumno" Relationship="Self.fk_PlanxAlumno_Profesor" FromRole="Profesor" ToRole="PlanxAlumno" />
+          <NavigationProperty Name="ProfesorxClase" Relationship="Self.fk_ProfesorxClase_Profesor" FromRole="Profesor" ToRole="ProfesorxClase" />
+          <NavigationProperty Name="TituloxProfesor" Relationship="Self.fk_TituloxProfesor_Profesor" FromRole="Profesor" ToRole="TituloxProfesor" />
+        </EntityType>
+        <EntityType Name="ProfesorxClase">
+          <Key>
+            <PropertyRef Name="idProfesorxClase" />
+          </Key>
+          <Property Name="idProfesorxClase" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idProfesor" Type="Int32" Nullable="false" />
+          <Property Name="idClase" Type="Int32" Nullable="false" />
+          <Property Name="fechaDesde" Type="DateTime" Precision="0" />
+          <Property Name="fechaHasta" Type="DateTime" Precision="0" />
+          <Property Name="dia" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="horaInicio" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AlumnoxClase" Relationship="Self.fk_AlumnoxClase_ProfesorxClase" FromRole="ProfesorxClase" ToRole="AlumnoxClase" />
+          <NavigationProperty Name="Clase" Relationship="Self.fk_ProfesorxClase_Clase" FromRole="ProfesorxClase" ToRole="Clase" />
+          <NavigationProperty Name="Profesor" Relationship="Self.fk_ProfesorxClase_Profesor" FromRole="ProfesorxClase" ToRole="Profesor" />
+        </EntityType>
+        <EntityType Name="Provincia">
+          <Key>
+            <PropertyRef Name="idProvincia" />
+          </Key>
+          <Property Name="idProvincia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Ciudad" Relationship="Self.fk_Ciudad_Provincia" FromRole="Provincia" ToRole="Ciudad" />
+        </EntityType>
+        <EntityType Name="TipoEjercicio">
+          <Key>
+            <PropertyRef Name="idTipoEjercicio" />
+          </Key>
+          <Property Name="idTipoEjercicio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Ejercicio" Relationship="Self.fk_Ejercicio_TipoEjercicio" FromRole="TipoEjercicio" ToRole="Ejercicio" />
+        </EntityType>
+        <EntityType Name="TipoPlan">
+          <Key>
+            <PropertyRef Name="idTipoPlan" />
+          </Key>
+          <Property Name="idTipoPlan" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Planes" Relationship="Self.fk_Planes_TipoPlan" FromRole="TipoPlan" ToRole="Planes" />
+        </EntityType>
+        <EntityType Name="Titulo">
+          <Key>
+            <PropertyRef Name="idTitulo" />
+          </Key>
+          <Property Name="idTitulo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TituloxProfesor" Relationship="Self.fk_TituloxProfesor_Titulo" FromRole="Titulo" ToRole="TituloxProfesor" />
+        </EntityType>
+        <EntityType Name="TituloxProfesor">
+          <Key>
+            <PropertyRef Name="idTituloxProfesor" />
+          </Key>
+          <Property Name="idTituloxProfesor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idTitulo" Type="Int32" />
+          <Property Name="idProfesor" Type="Int32" />
+          <Property Name="fechaEgreso" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Profesor" Relationship="Self.fk_TituloxProfesor_Profesor" FromRole="TituloxProfesor" ToRole="Profesor" />
+          <NavigationProperty Name="Titulo" Relationship="Self.fk_TituloxProfesor_Titulo" FromRole="TituloxProfesor" ToRole="Titulo" />
+        </EntityType>
+        <Association Name="fk_Alumno_Ciudad">
+          <End Role="Ciudad" Type="Self.Ciudad" Multiplicity="0..1" />
+          <End Role="Alumno" Type="Self.Alumno" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ciudad">
+              <PropertyRef Name="idCiudad" />
+            </Principal>
+            <Dependent Role="Alumno">
+              <PropertyRef Name="idCiudad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_AlumnoxClase_Alumno">
+          <End Role="Alumno" Type="Self.Alumno" Multiplicity="0..1" />
+          <End Role="AlumnoxClase" Type="Self.AlumnoxClase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Alumno">
+              <PropertyRef Name="idAlumno" />
+            </Principal>
+            <Dependent Role="AlumnoxClase">
+              <PropertyRef Name="idAlumno" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Asistencia_Alumno">
+          <End Role="Alumno" Type="Self.Alumno" Multiplicity="0..1" />
+          <End Role="Asistencia" Type="Self.Asistencia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Alumno">
+              <PropertyRef Name="idAlumno" />
+            </Principal>
+            <Dependent Role="Asistencia">
+              <PropertyRef Name="idAlumno" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_PlanxAlumno_Alumno">
+          <End Role="Alumno" Type="Self.Alumno" Multiplicity="0..1" />
+          <End Role="PlanxAlumno" Type="Self.PlanxAlumno" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Alumno">
+              <PropertyRef Name="idAlumno" />
+            </Principal>
+            <Dependent Role="PlanxAlumno">
+              <PropertyRef Name="idAlumno" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_AlumnoxClase_ProfesorxClase">
+          <End Role="ProfesorxClase" Type="Self.ProfesorxClase" Multiplicity="0..1" />
+          <End Role="AlumnoxClase" Type="Self.AlumnoxClase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProfesorxClase">
+              <PropertyRef Name="idProfesorxClase" />
+            </Principal>
+            <Dependent Role="AlumnoxClase">
+              <PropertyRef Name="idProfesorxClase" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Ciudad_Provincia">
+          <End Role="Provincia" Type="Self.Provincia" Multiplicity="0..1" />
+          <End Role="Ciudad" Type="Self.Ciudad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Provincia">
+              <PropertyRef Name="idProvincia" />
+            </Principal>
+            <Dependent Role="Ciudad">
+              <PropertyRef Name="idProvincia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Profesor_Ciudad">
+          <End Role="Ciudad" Type="Self.Ciudad" Multiplicity="0..1" />
+          <End Role="Profesor" Type="Self.Profesor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ciudad">
+              <PropertyRef Name="idCiudad" />
+            </Principal>
+            <Dependent Role="Profesor">
+              <PropertyRef Name="idCiudad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ProfesorxClase_Clase">
+          <End Role="Clase" Type="Self.Clase" Multiplicity="1" />
+          <End Role="ProfesorxClase" Type="Self.ProfesorxClase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clase">
+              <PropertyRef Name="idClase" />
+            </Principal>
+            <Dependent Role="ProfesorxClase">
+              <PropertyRef Name="idClase" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Ejercicio_Maquina">
+          <End Role="Maquina" Type="Self.Maquina" Multiplicity="0..1" />
+          <End Role="Ejercicio" Type="Self.Ejercicio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Maquina">
+              <PropertyRef Name="idMaquina" />
+            </Principal>
+            <Dependent Role="Ejercicio">
+              <PropertyRef Name="idMaquina" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Ejercicio_TipoEjercicio">
+          <End Role="TipoEjercicio" Type="Self.TipoEjercicio" Multiplicity="0..1" />
+          <End Role="Ejercicio" Type="Self.Ejercicio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoEjercicio">
+              <PropertyRef Name="idTipoEjercicio" />
+            </Principal>
+            <Dependent Role="Ejercicio">
+              <PropertyRef Name="idTipoEjercicio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_EjercicioPlanAlumno_Ejercicio">
+          <End Role="Ejercicio" Type="Self.Ejercicio" Multiplicity="1" />
+          <End Role="EjercicioPlanAlumno" Type="Self.EjercicioPlanAlumno" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ejercicio">
+              <PropertyRef Name="idEjercicio" />
+            </Principal>
+            <Dependent Role="EjercicioPlanAlumno">
+              <PropertyRef Name="idEjercicio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_EjercicioxPlan_Ejercicio">
+          <End Role="Ejercicio" Type="Self.Ejercicio" Multiplicity="1" />
+          <End Role="EjercicioxPlan" Type="Self.EjercicioxPlan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ejercicio">
+              <PropertyRef Name="idEjercicio" />
+            </Principal>
+            <Dependent Role="EjercicioxPlan">
+              <PropertyRef Name="idEjercicio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_EjercicioPlanAlumno_PlanxAlumno">
+          <End Role="PlanxAlumno" Type="Self.PlanxAlumno" Multiplicity="0..1" />
+          <End Role="EjercicioPlanAlumno" Type="Self.EjercicioPlanAlumno" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PlanxAlumno">
+              <PropertyRef Name="idPlanxAlumno" />
+            </Principal>
+            <Dependent Role="EjercicioPlanAlumno">
+              <PropertyRef Name="idPlanxAlumno" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_EjercicioxPlan_Plan">
+          <End Role="Planes" Type="Self.Planes" Multiplicity="1" />
+          <End Role="EjercicioxPlan" Type="Self.EjercicioxPlan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Planes">
+              <PropertyRef Name="idPlan" />
+            </Principal>
+            <Dependent Role="EjercicioxPlan">
+              <PropertyRef Name="idPlan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Planes_TipoPlan">
+          <End Role="TipoPlan" Type="Self.TipoPlan" Multiplicity="1" />
+          <End Role="Planes" Type="Self.Planes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoPlan">
+              <PropertyRef Name="idTipoPlan" />
+            </Principal>
+            <Dependent Role="Planes">
+              <PropertyRef Name="idTipoPlan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_PlanxAlumno_Planes">
+          <End Role="Planes" Type="Self.Planes" Multiplicity="0..1" />
+          <End Role="PlanxAlumno" Type="Self.PlanxAlumno" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Planes">
+              <PropertyRef Name="idPlan" />
+            </Principal>
+            <Dependent Role="PlanxAlumno">
+              <PropertyRef Name="idPlan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_PlanxAlumno_Profesor">
+          <End Role="Profesor" Type="Self.Profesor" Multiplicity="0..1" />
+          <End Role="PlanxAlumno" Type="Self.PlanxAlumno" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Profesor">
+              <PropertyRef Name="idProfesor" />
+            </Principal>
+            <Dependent Role="PlanxAlumno">
+              <PropertyRef Name="idProfesor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ProfesorxClase_Profesor">
+          <End Role="Profesor" Type="Self.Profesor" Multiplicity="1" />
+          <End Role="ProfesorxClase" Type="Self.ProfesorxClase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Profesor">
+              <PropertyRef Name="idProfesor" />
+            </Principal>
+            <Dependent Role="ProfesorxClase">
+              <PropertyRef Name="idProfesor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_TituloxProfesor_Profesor">
+          <End Role="Profesor" Type="Self.Profesor" Multiplicity="0..1" />
+          <End Role="TituloxProfesor" Type="Self.TituloxProfesor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Profesor">
+              <PropertyRef Name="idProfesor" />
+            </Principal>
+            <Dependent Role="TituloxProfesor">
+              <PropertyRef Name="idProfesor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_TituloxProfesor_Titulo">
+          <End Role="Titulo" Type="Self.Titulo" Multiplicity="0..1" />
+          <End Role="TituloxProfesor" Type="Self.TituloxProfesor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Titulo">
+              <PropertyRef Name="idTitulo" />
+            </Principal>
+            <Dependent Role="TituloxProfesor">
+              <PropertyRef Name="idTitulo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BDGimnasioEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Alumno" EntityType="Self.Alumno" />
+          <EntitySet Name="AlumnoxClase" EntityType="Self.AlumnoxClase" />
+          <EntitySet Name="Asistencia" EntityType="Self.Asistencia" />
+          <EntitySet Name="Ciudad" EntityType="Self.Ciudad" />
+          <EntitySet Name="Clase" EntityType="Self.Clase" />
+          <EntitySet Name="Ejercicio" EntityType="Self.Ejercicio" />
+          <EntitySet Name="EjercicioPlanAlumno" EntityType="Self.EjercicioPlanAlumno" />
+          <EntitySet Name="EjercicioxPlan" EntityType="Self.EjercicioxPlan" />
+          <EntitySet Name="Maquina" EntityType="Self.Maquina" />
+          <EntitySet Name="Planes" EntityType="Self.Planes" />
+          <EntitySet Name="PlanxAlumno" EntityType="Self.PlanxAlumno" />
+          <EntitySet Name="Profesor" EntityType="Self.Profesor" />
+          <EntitySet Name="ProfesorxClase" EntityType="Self.ProfesorxClase" />
+          <EntitySet Name="Provincia" EntityType="Self.Provincia" />
+          <EntitySet Name="TipoEjercicio" EntityType="Self.TipoEjercicio" />
+          <EntitySet Name="TipoPlan" EntityType="Self.TipoPlan" />
+          <EntitySet Name="Titulo" EntityType="Self.Titulo" />
+          <EntitySet Name="TituloxProfesor" EntityType="Self.TituloxProfesor" />
+          <AssociationSet Name="fk_Alumno_Ciudad" Association="Self.fk_Alumno_Ciudad">
+            <End Role="Ciudad" EntitySet="Ciudad" />
+            <End Role="Alumno" EntitySet="Alumno" />
+          </AssociationSet>
+          <AssociationSet Name="fk_AlumnoxClase_Alumno" Association="Self.fk_AlumnoxClase_Alumno">
+            <End Role="Alumno" EntitySet="Alumno" />
+            <End Role="AlumnoxClase" EntitySet="AlumnoxClase" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Asistencia_Alumno" Association="Self.fk_Asistencia_Alumno">
+            <End Role="Alumno" EntitySet="Alumno" />
+            <End Role="Asistencia" EntitySet="Asistencia" />
+          </AssociationSet>
+          <AssociationSet Name="fk_PlanxAlumno_Alumno" Association="Self.fk_PlanxAlumno_Alumno">
+            <End Role="Alumno" EntitySet="Alumno" />
+            <End Role="PlanxAlumno" EntitySet="PlanxAlumno" />
+          </AssociationSet>
+          <AssociationSet Name="fk_AlumnoxClase_ProfesorxClase" Association="Self.fk_AlumnoxClase_ProfesorxClase">
+            <End Role="ProfesorxClase" EntitySet="ProfesorxClase" />
+            <End Role="AlumnoxClase" EntitySet="AlumnoxClase" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Ciudad_Provincia" Association="Self.fk_Ciudad_Provincia">
+            <End Role="Provincia" EntitySet="Provincia" />
+            <End Role="Ciudad" EntitySet="Ciudad" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Profesor_Ciudad" Association="Self.fk_Profesor_Ciudad">
+            <End Role="Ciudad" EntitySet="Ciudad" />
+            <End Role="Profesor" EntitySet="Profesor" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ProfesorxClase_Clase" Association="Self.fk_ProfesorxClase_Clase">
+            <End Role="Clase" EntitySet="Clase" />
+            <End Role="ProfesorxClase" EntitySet="ProfesorxClase" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Ejercicio_Maquina" Association="Self.fk_Ejercicio_Maquina">
+            <End Role="Maquina" EntitySet="Maquina" />
+            <End Role="Ejercicio" EntitySet="Ejercicio" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Ejercicio_TipoEjercicio" Association="Self.fk_Ejercicio_TipoEjercicio">
+            <End Role="TipoEjercicio" EntitySet="TipoEjercicio" />
+            <End Role="Ejercicio" EntitySet="Ejercicio" />
+          </AssociationSet>
+          <AssociationSet Name="fk_EjercicioPlanAlumno_Ejercicio" Association="Self.fk_EjercicioPlanAlumno_Ejercicio">
+            <End Role="Ejercicio" EntitySet="Ejercicio" />
+            <End Role="EjercicioPlanAlumno" EntitySet="EjercicioPlanAlumno" />
+          </AssociationSet>
+          <AssociationSet Name="fk_EjercicioxPlan_Ejercicio" Association="Self.fk_EjercicioxPlan_Ejercicio">
+            <End Role="Ejercicio" EntitySet="Ejercicio" />
+            <End Role="EjercicioxPlan" EntitySet="EjercicioxPlan" />
+          </AssociationSet>
+          <AssociationSet Name="fk_EjercicioPlanAlumno_PlanxAlumno" Association="Self.fk_EjercicioPlanAlumno_PlanxAlumno">
+            <End Role="PlanxAlumno" EntitySet="PlanxAlumno" />
+            <End Role="EjercicioPlanAlumno" EntitySet="EjercicioPlanAlumno" />
+          </AssociationSet>
+          <AssociationSet Name="fk_EjercicioxPlan_Plan" Association="Self.fk_EjercicioxPlan_Plan">
+            <End Role="Planes" EntitySet="Planes" />
+            <End Role="EjercicioxPlan" EntitySet="EjercicioxPlan" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Planes_TipoPlan" Association="Self.fk_Planes_TipoPlan">
+            <End Role="TipoPlan" EntitySet="TipoPlan" />
+            <End Role="Planes" EntitySet="Planes" />
+          </AssociationSet>
+          <AssociationSet Name="fk_PlanxAlumno_Planes" Association="Self.fk_PlanxAlumno_Planes">
+            <End Role="Planes" EntitySet="Planes" />
+            <End Role="PlanxAlumno" EntitySet="PlanxAlumno" />
+          </AssociationSet>
+          <AssociationSet Name="fk_PlanxAlumno_Profesor" Association="Self.fk_PlanxAlumno_Profesor">
+            <End Role="Profesor" EntitySet="Profesor" />
+            <End Role="PlanxAlumno" EntitySet="PlanxAlumno" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ProfesorxClase_Profesor" Association="Self.fk_ProfesorxClase_Profesor">
+            <End Role="Profesor" EntitySet="Profesor" />
+            <End Role="ProfesorxClase" EntitySet="ProfesorxClase" />
+          </AssociationSet>
+          <AssociationSet Name="fk_TituloxProfesor_Profesor" Association="Self.fk_TituloxProfesor_Profesor">
+            <End Role="Profesor" EntitySet="Profesor" />
+            <End Role="TituloxProfesor" EntitySet="TituloxProfesor" />
+          </AssociationSet>
+          <AssociationSet Name="fk_TituloxProfesor_Titulo" Association="Self.fk_TituloxProfesor_Titulo">
+            <End Role="Titulo" EntitySet="Titulo" />
+            <End Role="TituloxProfesor" EntitySet="TituloxProfesor" />
+          </AssociationSet>
+          <EntitySet Name="vPlanPersonalizado" EntityType="BDGimnasioModel.vPlanPersonalizado" />
+          <EntitySet Name="Usuario" EntityType="BDGimnasioModel.Usuario" />
+        </EntityContainer>
+        <EntityType Name="vPlanPersonalizado">
+          <Key>
+            <PropertyRef Name="Alumno" />
+          </Key>
+          <Property Name="Ejercicio" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Series" Type="Int32" />
+          <Property Name="Repeticiones" Type="Int32" />
+          <Property Name="Maquina" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Dia" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Observaciones" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="PlanBase" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="idAlumno" Type="Int32" />
+          <Property Name="idPxA" Type="Int32" />
+          <Property Name="fechaDesde" Type="DateTime" Precision="0" />
+          <Property Name="Alumno" Type="String" Nullable="false" MaxLength="201" FixedLength="false" Unicode="true" />
+          <Property Name="DNI" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Direccion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="idUsuario" />
+          </Key>
+          <Property Name="idUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="usuario1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="contraseña" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BDGimnasioModelStoreContainer" CdmEntityContainer="BDGimnasioEntities">
+          <EntitySetMapping Name="Alumno">
+            <EntityTypeMapping TypeName="BDGimnasioModel.Alumno">
+              <MappingFragment StoreEntitySet="Alumno">
+                <ScalarProperty Name="idAlumno" ColumnName="idAlumno" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="apellido" ColumnName="apellido" />
+                <ScalarProperty Name="dni" ColumnName="dni" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="fechaNac" ColumnName="fechaNac" />
+                <ScalarProperty Name="idCiudad" ColumnName="idCiudad" />
+                <ScalarProperty Name="observaciones" ColumnName="observaciones" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AlumnoxClase">
+            <EntityTypeMapping TypeName="BDGimnasioModel.AlumnoxClase">
+              <MappingFragment StoreEntitySet="AlumnoxClase">
+                <ScalarProperty Name="idAlumnoxClase" ColumnName="idAlumnoxClase" />
+                <ScalarProperty Name="idAlumno" ColumnName="idAlumno" />
+                <ScalarProperty Name="idProfesorxClase" ColumnName="idProfesorxClase" />
+                <ScalarProperty Name="fechaDesde" ColumnName="fechaDesde" />
+                <ScalarProperty Name="fechaHasta" ColumnName="fechaHasta" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Asistencia">
+            <EntityTypeMapping TypeName="BDGimnasioModel.Asistencia">
+              <MappingFragment StoreEntitySet="Asistencia">
+                <ScalarProperty Name="idAsistencia" ColumnName="idAsistencia" />
+                <ScalarProperty Name="idAlumno" ColumnName="idAlumno" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ciudad">
+            <EntityTypeMapping TypeName="BDGimnasioModel.Ciudad">
+              <MappingFragment StoreEntitySet="Ciudad">
+                <ScalarProperty Name="idCiudad" ColumnName="idCiudad" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="idProvincia" ColumnName="idProvincia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clase">
+            <EntityTypeMapping TypeName="BDGimnasioModel.Clase">
+              <MappingFragment StoreEntitySet="Clase">
+                <ScalarProperty Name="idClase" ColumnName="idClase" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="fechaDesde" ColumnName="fechaDesde" />
+                <ScalarProperty Name="fechaHasta" ColumnName="fechaHasta" />
+                <ScalarProperty Name="cupoMaximo" ColumnName="cupoMaximo" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ejercicio">
+            <EntityTypeMapping TypeName="BDGimnasioModel.Ejercicio">
+              <MappingFragment StoreEntitySet="Ejercicio">
+                <ScalarProperty Name="idEjercicio" ColumnName="idEjercicio" />
+                <ScalarProperty Name="idMaquina" ColumnName="idMaquina" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="idTipoEjercicio" ColumnName="idTipoEjercicio" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EjercicioPlanAlumno">
+            <EntityTypeMapping TypeName="BDGimnasioModel.EjercicioPlanAlumno">
+              <MappingFragment StoreEntitySet="EjercicioPlanAlumno">
+                <ScalarProperty Name="idEjercicioPlanAlumno" ColumnName="idEjercicioPlanAlumno" />
+                <ScalarProperty Name="idEjercicio" ColumnName="idEjercicio" />
+                <ScalarProperty Name="idPlanxAlumno" ColumnName="idPlanxAlumno" />
+                <ScalarProperty Name="repeticiones" ColumnName="repeticiones" />
+                <ScalarProperty Name="series" ColumnName="series" />
+                <ScalarProperty Name="intensidadCarga" ColumnName="intensidadCarga" />
+                <ScalarProperty Name="observaciones" ColumnName="observaciones" />
+                <ScalarProperty Name="dia" ColumnName="dia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EjercicioxPlan">
+            <EntityTypeMapping TypeName="BDGimnasioModel.EjercicioxPlan">
+              <MappingFragment StoreEntitySet="EjercicioxPlan">
+                <ScalarProperty Name="idEjercicioxPlan" ColumnName="idEjercicioxPlan" />
+                <ScalarProperty Name="idEjercicio" ColumnName="idEjercicio" />
+                <ScalarProperty Name="idPlan" ColumnName="idPlan" />
+                <ScalarProperty Name="repeticiones" ColumnName="repeticiones" />
+                <ScalarProperty Name="series" ColumnName="series" />
+                <ScalarProperty Name="observaciones" ColumnName="observaciones" />
+                <ScalarProperty Name="dia" ColumnName="dia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Maquina">
+            <EntityTypeMapping TypeName="BDGimnasioModel.Maquina">
+              <MappingFragment StoreEntitySet="Maquina">
+                <ScalarProperty Name="idMaquina" ColumnName="idMaquina" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="fechaAlta" ColumnName="fechaAlta" />
+                <ScalarProperty Name="fechaBaja" ColumnName="fechaBaja" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Planes">
+            <EntityTypeMapping TypeName="BDGimnasioModel.Planes">
+              <MappingFragment StoreEntitySet="Planes">
+                <ScalarProperty Name="idPlan" ColumnName="idPlan" />
+                <ScalarProperty Name="idTipoPlan" ColumnName="idTipoPlan" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PlanxAlumno">
+            <EntityTypeMapping TypeName="BDGimnasioModel.PlanxAlumno">
+              <MappingFragment StoreEntitySet="PlanxAlumno">
+                <ScalarProperty Name="idPlanxAlumno" ColumnName="idPlanxAlumno" />
+                <ScalarProperty Name="idPlan" ColumnName="idPlan" />
+                <ScalarProperty Name="idAlumno" ColumnName="idAlumno" />
+                <ScalarProperty Name="nro" ColumnName="nro" />
+                <ScalarProperty Name="fechaDesde" ColumnName="fechaDesde" />
+                <ScalarProperty Name="fechaHasta" ColumnName="fechaHasta" />
+                <ScalarProperty Name="idProfesor" ColumnName="idProfesor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Profesor">
+            <EntityTypeMapping TypeName="BDGimnasioModel.Profesor">
+              <MappingFragment StoreEntitySet="Profesor">
+                <ScalarProperty Name="idProfesor" ColumnName="idProfesor" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="apellido" ColumnName="apellido" />
+                <ScalarProperty Name="dni" ColumnName="dni" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="fechaNac" ColumnName="fechaNac" />
+                <ScalarProperty Name="idCiudad" ColumnName="idCiudad" />
+                <ScalarProperty Name="observaciones" ColumnName="observaciones" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProfesorxClase">
+            <EntityTypeMapping TypeName="BDGimnasioModel.ProfesorxClase">
+              <MappingFragment StoreEntitySet="ProfesorxClase">
+                <ScalarProperty Name="idProfesorxClase" ColumnName="idProfesorxClase" />
+                <ScalarProperty Name="idProfesor" ColumnName="idProfesor" />
+                <ScalarProperty Name="idClase" ColumnName="idClase" />
+                <ScalarProperty Name="fechaDesde" ColumnName="fechaDesde" />
+                <ScalarProperty Name="fechaHasta" ColumnName="fechaHasta" />
+                <ScalarProperty Name="dia" ColumnName="dia" />
+                <ScalarProperty Name="horaInicio" ColumnName="horaInicio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Provincia">
+            <EntityTypeMapping TypeName="BDGimnasioModel.Provincia">
+              <MappingFragment StoreEntitySet="Provincia">
+                <ScalarProperty Name="idProvincia" ColumnName="idProvincia" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoEjercicio">
+            <EntityTypeMapping TypeName="BDGimnasioModel.TipoEjercicio">
+              <MappingFragment StoreEntitySet="TipoEjercicio">
+                <ScalarProperty Name="idTipoEjercicio" ColumnName="idTipoEjercicio" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoPlan">
+            <EntityTypeMapping TypeName="BDGimnasioModel.TipoPlan">
+              <MappingFragment StoreEntitySet="TipoPlan">
+                <ScalarProperty Name="idTipoPlan" ColumnName="idTipoPlan" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Titulo">
+            <EntityTypeMapping TypeName="BDGimnasioModel.Titulo">
+              <MappingFragment StoreEntitySet="Titulo">
+                <ScalarProperty Name="idTitulo" ColumnName="idTitulo" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TituloxProfesor">
+            <EntityTypeMapping TypeName="BDGimnasioModel.TituloxProfesor">
+              <MappingFragment StoreEntitySet="TituloxProfesor">
+                <ScalarProperty Name="idTituloxProfesor" ColumnName="idTituloxProfesor" />
+                <ScalarProperty Name="idTitulo" ColumnName="idTitulo" />
+                <ScalarProperty Name="idProfesor" ColumnName="idProfesor" />
+                <ScalarProperty Name="fechaEgreso" ColumnName="fechaEgreso" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vPlanPersonalizado">
+            <EntityTypeMapping TypeName="BDGimnasioModel.vPlanPersonalizado">
+              <MappingFragment StoreEntitySet="vPlanPersonalizado">
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="DNI" ColumnName="DNI" />
+                <ScalarProperty Name="Alumno" ColumnName="Alumno" />
+                <ScalarProperty Name="fechaDesde" ColumnName="fechaDesde" />
+                <ScalarProperty Name="idPxA" ColumnName="idPxA" />
+                <ScalarProperty Name="idAlumno" ColumnName="idAlumno" />
+                <ScalarProperty Name="PlanBase" ColumnName="PlanBase" />
+                <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+                <ScalarProperty Name="Dia" ColumnName="Dia" />
+                <ScalarProperty Name="Maquina" ColumnName="Maquina" />
+                <ScalarProperty Name="Repeticiones" ColumnName="Repeticiones" />
+                <ScalarProperty Name="Series" ColumnName="Series" />
+                <ScalarProperty Name="Ejercicio" ColumnName="Ejercicio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuario">
+            <EntityTypeMapping TypeName="BDGimnasioModel.Usuario">
+              <MappingFragment StoreEntitySet="Usuario">
+                <ScalarProperty Name="contraseña" ColumnName="contraseña" />
+                <ScalarProperty Name="usuario1" ColumnName="usuario" />
+                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

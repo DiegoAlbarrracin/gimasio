@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="5df56a076b574abfb611a8b47237868d" Name="Diagram1" ZoomLevel="93">
+        <EntityTypeShape EntityType="BDGimnasioModel.Alumno" Width="1.5" PointX="5.25" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDGimnasioModel.AlumnoxClase" Width="1.5" PointX="7.5" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDGimnasioModel.Asistencia" Width="1.5" PointX="7.5" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDGimnasioModel.Ciudad" Width="1.5" PointX="3" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDGimnasioModel.Clase" Width="1.5" PointX="5.25" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDGimnasioModel.Ejercicio" Width="1.5" PointX="10.5" PointY="16.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDGimnasioModel.EjercicioPlanAlumno" Width="1.5" PointX="12.75" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDGimnasioModel.EjercicioxPlan" Width="1.5" PointX="12.75" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDGimnasioModel.Maquina" Width="1.5" PointX="8.25" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDGimnasioModel.Planes" Width="1.5" PointX="8.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDGimnasioModel.PlanxAlumno" Width="1.5" PointX="10.5" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDGimnasioModel.Profesor" Width="1.5" PointX="5.25" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDGimnasioModel.ProfesorxClase" Width="1.5" PointX="7.5" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDGimnasioModel.Provincia" Width="1.5" PointX="0.75" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDGimnasioModel.TipoEjercicio" Width="1.5" PointX="8.25" PointY="19" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDGimnasioModel.TipoPlan" Width="1.5" PointX="6" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDGimnasioModel.Titulo" Width="1.5" PointX="8.25" PointY="21.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDGimnasioModel.TituloxProfesor" Width="1.5" PointX="10.5" PointY="12.5" IsExpanded="true" />
+        <AssociationConnector Association="BDGimnasioModel.fk_Alumno_Ciudad" ManuallyRouted="false" />
+        <AssociationConnector Association="BDGimnasioModel.fk_AlumnoxClase_Alumno" ManuallyRouted="false" />
+        <AssociationConnector Association="BDGimnasioModel.fk_Asistencia_Alumno" ManuallyRouted="false" />
+        <AssociationConnector Association="BDGimnasioModel.fk_PlanxAlumno_Alumno" ManuallyRouted="false" />
+        <AssociationConnector Association="BDGimnasioModel.fk_AlumnoxClase_ProfesorxClase" ManuallyRouted="false" />
+        <AssociationConnector Association="BDGimnasioModel.fk_Ciudad_Provincia" ManuallyRouted="false" />
+        <AssociationConnector Association="BDGimnasioModel.fk_Profesor_Ciudad" ManuallyRouted="false" />
+        <AssociationConnector Association="BDGimnasioModel.fk_ProfesorxClase_Clase" ManuallyRouted="false" />
+        <AssociationConnector Association="BDGimnasioModel.fk_Ejercicio_Maquina" ManuallyRouted="false" />
+        <AssociationConnector Association="BDGimnasioModel.fk_Ejercicio_TipoEjercicio" ManuallyRouted="false" />
+        <AssociationConnector Association="BDGimnasioModel.fk_EjercicioPlanAlumno_Ejercicio" ManuallyRouted="false" />
+        <AssociationConnector Association="BDGimnasioModel.fk_EjercicioxPlan_Ejercicio" ManuallyRouted="false" />
+        <AssociationConnector Association="BDGimnasioModel.fk_EjercicioPlanAlumno_PlanxAlumno" ManuallyRouted="false" />
+        <AssociationConnector Association="BDGimnasioModel.fk_EjercicioxPlan_Plan" ManuallyRouted="false" />
+        <AssociationConnector Association="BDGimnasioModel.fk_Planes_TipoPlan" ManuallyRouted="false" />
+        <AssociationConnector Association="BDGimnasioModel.fk_PlanxAlumno_Planes" ManuallyRouted="false" />
+        <AssociationConnector Association="BDGimnasioModel.fk_PlanxAlumno_Profesor" ManuallyRouted="false" />
+        <AssociationConnector Association="BDGimnasioModel.fk_ProfesorxClase_Profesor" ManuallyRouted="false" />
+        <AssociationConnector Association="BDGimnasioModel.fk_TituloxProfesor_Profesor" ManuallyRouted="false" />
+        <AssociationConnector Association="BDGimnasioModel.fk_TituloxProfesor_Titulo" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="BDGimnasioModel.vPlanPersonalizado" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="BDGimnasioModel.Usuario" Width="1.5" PointX="0.75" PointY="5.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

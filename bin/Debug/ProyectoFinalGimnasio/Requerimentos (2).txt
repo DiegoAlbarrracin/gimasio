@@ -1,0 +1,27 @@
+Requerimentos:
+
+-Administrar profesores
+-Administrar alumnos.
+-Administrar clases.
+-Administrar planes.
+-Administrar maquinas. AMB(fecha alta, nombre y descripcion para que sirve, estado(activa, reparacion))
+-----------------------------------------------------------------------
+DER:
+Entidades: Ejercicio(unido a Plan, columnas: nombre, con que maquina se hace, SALE OTRA TABLA MAQUINA(su foranea en ejercicio puede ser NULL, tiene maquina o no), asociada a Ejercicio), intermedia EjercicioxPlan ( repeticiones de ese ejercicio) , Plan (aca van los genericos, prehechos, columnas: id, nivel dificultad(baja, intermedia, alta), tipo plan(inicial,etc), tipo objetivo(bajar peso, muscular) ), Alumno(nombre, estado(activo, inactivo), etc), Clase(horario inicio, horario fin,tipo(spinnings, aerobic, etc), Profesor, intermedia AlumnoxClase, intermedia ProfesorxClase, intermedia PlanxAlumno(aca van los detalles, fecha inicio, fecha fin aprox, Estado(comenzado, no comenzado, cancelado, cumplido),) etc). HAY UNA TABLA ESTADO QUE SE UNE A CASI TODOS, EL CAMPO OBSERVACIONES VA EN CASI TODAS.
+
+Planes relacionado a Alumnos.
+
+Cobro de cuotas no va en nada.
+-----------------------------------------------------------------------
+Pantalla principal consta de accesos directos: ej: Alumno, esto te muestra un listado de alumnos, contenidos en un datagridview, y que ahi cerca haya un BOTON AGREGAR ALUMNO, y ese boton me lleva al ABM Alumno. (tambien van botones de editar alumno y eliminarlo).
+AMB: Alta, Baja y Modificacion. Ejemplo ABM Alumno: nombre, apellido, fecha nacimiento(date time picker), DNI, telefono, direccion, observaciones, email, localidad(duda) y cosas del alumno
+-----------------------------------------------------------------------
+Recordar: 
+
+-Hacer 5 botones con los nombres de lo de arriba.
+-Usar tollStrip (propiedad autosize poner FALSE). / Usar dockfild adentro de un panel (este ultimo lo hacemos variar de tamaño hasta conseguir el deseado).
+-Usar la barra esa que use yo para el borde negro (panel).
+-Si la maximizo y minimizo que se vea bien.
+-Propiedad Windows State MAXIMIZED (en el form).
+-propiedad del tooltiptext y text poner nombre del boton, imageScaling poner en none, en textImageRelation poner imageAboveText.
+-RECORDAR LO DE LA RELACION DE ASPECTO, el dgv tiene un dockfeed algo asi y se ampliaria al maximizar
